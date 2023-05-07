@@ -38,4 +38,13 @@ class UserController() {
             return ResponseEntity<Any>(User(), HttpStatus.CONFLICT)
         }
     }
+
+    @PutMapping()
+    fun update(@RequestBody user: User): ResponseEntity<User>{
+        try{
+            return ResponseEntity<User>(userService.updateUser(user), HttpStatus.OK)
+        }catch (objectNotFoundException: ObjectNotFoundException){
+            return ResponseEntity<User>(User(), HttpStatus.NOT_FOUND)
+        }
+    }
 }

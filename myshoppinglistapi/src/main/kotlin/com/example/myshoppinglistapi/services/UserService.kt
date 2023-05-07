@@ -24,12 +24,21 @@ class UserService() {
         return if(user.isPresent) user.get() else throw ObjectNotFoundException("Usuário não encontrado! email: ${email}")
     }
 
-    fun saveUser(user: User){
+    fun saveUser(user: User): User{
         try{
             findById(user.email)
-            throw UserExistException("Usuário já existe!")
+            return throw UserExistException("Usuário já existe!")
         }catch (objectNotFoundException: ObjectNotFoundException){
-            userRepository.save(user)
+            return userRepository.save(user)
+        }
+    }
+
+    fun updateUser(user: User): User{
+        try {
+            findById(user.email)
+            return userRepository.save(user)
+        }catch (objectNotFoundException: ObjectNotFoundException){
+            return throw objectNotFoundException
         }
     }
 }

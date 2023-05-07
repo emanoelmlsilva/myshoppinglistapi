@@ -1,6 +1,6 @@
-package repositories
+package com.example.myshoppinglistapi.repositories
 
-import entities.User
+import com.example.myshoppinglistapi.entities.User
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

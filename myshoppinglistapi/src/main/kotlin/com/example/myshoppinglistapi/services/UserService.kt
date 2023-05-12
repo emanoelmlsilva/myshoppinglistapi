@@ -27,7 +27,7 @@ class UserService() {
     fun saveUser(user: User): User{
         try{
             findById(user.email)
-            return throw UserExistException("Usuário já existe!")
+            throw UserExistException("Usuário já existe!")
         }catch (objectNotFoundException: ObjectNotFoundException){
             return userRepository.save(user)
         }
@@ -38,7 +38,7 @@ class UserService() {
             findById(user.email)
             return userRepository.save(user)
         }catch (objectNotFoundException: ObjectNotFoundException){
-            return throw objectNotFoundException
+            throw objectNotFoundException
         }
     }
 }

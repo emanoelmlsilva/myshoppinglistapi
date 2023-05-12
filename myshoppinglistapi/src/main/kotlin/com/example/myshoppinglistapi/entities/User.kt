@@ -1,10 +1,8 @@
 package com.example.myshoppinglistapi.entities
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import org.jetbrains.annotations.NotNull
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "users")
@@ -29,6 +27,10 @@ class User() {
     @field:NotNull
     @field:Column(name = "idAvatar")
     var idAvatar: Int = 0
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    var creditCardCollection: List<CreditCard> = listOf()
 
     constructor(
         email: String,

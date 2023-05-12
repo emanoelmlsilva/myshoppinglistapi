@@ -32,6 +32,10 @@ class User() {
     @JsonIgnore
     var creditCardCollection: List<CreditCard> = listOf()
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    var categoryCollection: List<Category> = listOf()
+
     constructor(
         email: String,
         password: String,

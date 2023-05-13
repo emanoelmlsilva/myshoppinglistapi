@@ -27,7 +27,12 @@ class Category() {
 
     @OneToMany(mappedBy = "category")
     @JsonIgnore
-    var categoryCollection: List<Category> = listOf()
+    var purchaseCollection: List<Purchase> = listOf()
+
+    @OneToMany(mappedBy = "category")
+    @JsonIgnore
+    var itemListCollection: List<ItemList> = listOf()
+
     constructor(id: Long, category: String, idImage: Int, color: Int) : this(){
         this.id = id
         this.category = category

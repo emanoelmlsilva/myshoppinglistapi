@@ -1,5 +1,6 @@
 package com.example.myshoppinglistapi.entities
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity

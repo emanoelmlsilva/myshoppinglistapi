@@ -37,9 +37,13 @@ class CreditCard {
     @field:Column(name = "position")
     var position: Int = 0
 
-    @OneToMany
-    @JoinColumn(name = "purchase")
+    @OneToMany(mappedBy = "creditCard")
+    @JsonIgnore
     var purchaseCollection: List<Purchase> = listOf()
+
+    @OneToMany(mappedBy = "creditCard")
+    @JsonIgnore
+    var itemListCollection: List<ItemList> = listOf()
 
     constructor()
 

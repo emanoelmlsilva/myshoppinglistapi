@@ -32,19 +32,19 @@ class UserController() {
 
     @PostMapping()
     fun save(@RequestBody user: User): ResponseEntity<Any> {
-        try {
-            return ResponseEntity<Any>(userService.saveUser(user), HttpStatus.OK)
+        return try {
+            ResponseEntity<Any>(userService.saveUser(user), HttpStatus.OK)
         }catch(exception: UserExistException){
-            return ResponseEntity<Any>(User(), HttpStatus.CONFLICT)
+            ResponseEntity<Any>(User(), HttpStatus.CONFLICT)
         }
     }
 
     @PutMapping()
     fun update(@RequestBody user: User): ResponseEntity<User>{
-        try{
-            return ResponseEntity<User>(userService.updateUser(user), HttpStatus.OK)
+        return try{
+            ResponseEntity<User>(userService.updateUser(user), HttpStatus.OK)
         }catch (objectNotFoundException: ObjectNotFoundException){
-            return ResponseEntity<User>(User(), HttpStatus.NOT_FOUND)
+            ResponseEntity<User>(User(), HttpStatus.NOT_FOUND)
         }
     }
 }

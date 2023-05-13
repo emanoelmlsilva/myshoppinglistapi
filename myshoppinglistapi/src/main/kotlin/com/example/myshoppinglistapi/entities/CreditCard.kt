@@ -37,6 +37,10 @@ class CreditCard {
     @field:Column(name = "position")
     var position: Int = 0
 
+    @OneToMany
+    @JoinColumn(name = "purchase")
+    var purchaseCollection: List<Purchase> = listOf()
+
     constructor()
 
     constructor(

@@ -1,5 +1,6 @@
 package com.example.myshoppinglistapi.entities
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import javax.persistence.*
 
 @Entity
@@ -24,6 +25,9 @@ class Category() {
     @JoinColumn(name = "user_id")
     var user: User = User()
 
+    @OneToMany(mappedBy = "category")
+    @JsonIgnore
+    var categoryCollection: List<Category> = listOf()
     constructor(id: Long, category: String, idImage: Int, color: Int) : this(){
         this.id = id
         this.category = category

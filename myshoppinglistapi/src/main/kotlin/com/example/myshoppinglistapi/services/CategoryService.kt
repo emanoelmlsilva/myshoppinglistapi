@@ -13,6 +13,9 @@ class CategoryService {
     @Autowired
     lateinit var categoryRepository: CategoryRepository
 
+    fun findAllByEmail(email: String): List<Category>{
+        return categoryRepository.findAllByUserEmail(email)
+    }
     fun findById(id: Long): Category{
         val category = categoryRepository.findById(id)
         return if(category.isPresent) category.get() else throw ObjectNotFoundException("Categoria não encontrada!")

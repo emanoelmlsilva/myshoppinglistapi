@@ -9,7 +9,7 @@ class CreditCard {
 
     @field:Id
     @field:GeneratedValue(strategy = GenerationType.IDENTITY)
-    @field:Column(name = "idCard")
+    @field:Column(name = "idCreditCard")
     var id: Long = 0
 
     @field:Column(name = "holderName")

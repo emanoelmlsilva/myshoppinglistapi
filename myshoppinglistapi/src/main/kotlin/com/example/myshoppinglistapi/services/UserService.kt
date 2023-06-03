@@ -19,14 +19,14 @@ class UserService() {
         return userRepository.findAll()
     }
 
-    fun findById(email: String) : User {
-        val user = userRepository.findById(email)
+    fun findById(email: String, password: String) : User {
+        val user = userRepository.findByEmailAndPassword(email, password)
         return if(user.isPresent) user.get() else throw ObjectNotFoundException("Usuário não encontrado! email: ${email}")
     }
 
     fun saveUser(user: User): User{
         try{
-            findById(user.email)
+            findById(user.email, user.password)
             throw UserExistException("Usuário já existe!")
         }catch (objectNotFoundException: ObjectNotFoundException){
             return userRepository.save(user)
@@ -35,9 +35,14 @@ class UserService() {
 
     fun updateUser(user: User): User{
         try {
-            findById(user.email)
-            return userRepository.save(user)
-        }catch (objectNotFoundException: ObjectNotFoundException){
+            val userOld = findById(user.email, user.password)
+
+            userOld.name = user.name
+            userOld.nickName = user.nickName
+            userOld.idAvatar = user.idAvatar
+
+            return userRepository.save(userOld)
+        }catch  (objectNotFoundException: ObjectNotFoundException){
             throw objectNotFoundException
         }
     }

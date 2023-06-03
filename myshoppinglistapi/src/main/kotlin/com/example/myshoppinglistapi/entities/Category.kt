@@ -9,14 +9,14 @@ class Category() {
 
     @field:Id
     @field:GeneratedValue(strategy = GenerationType.IDENTITY)
-    @field:Column(name = "idCategory")
+    @field:Column(name = "id")
     var id: Long = 0L
 
     @field:Column(name = "category")
     var category: String = ""
 
     @field:Column(name = "idImage")
-    var idImage: Int = 0
+    var idImage: String = ""
 
     @field:Column(name = "color")
     var color: Int = 0
@@ -33,7 +33,7 @@ class Category() {
     @JsonIgnore
     var itemListCollection: List<ItemList> = listOf()
 
-    constructor(id: Long, category: String, idImage: Int, color: Int) : this(){
+    constructor(id: Long, category: String, idImage: String, color: Int) : this(){
         this.id = id
         this.category = category
         this.idImage = idImage

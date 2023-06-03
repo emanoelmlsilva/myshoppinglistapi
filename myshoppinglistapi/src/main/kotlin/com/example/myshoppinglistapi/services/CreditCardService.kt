@@ -37,8 +37,13 @@ class CreditCardService() {
 
     fun updateCreditCard(creditCard: CreditCard): CreditCard{
         try{
-            findById(creditCard.id)
-            return creditCardRepository.save(creditCard)
+            val creditCardOld = findById(creditCard.id)
+            creditCardOld.cardName = creditCard.cardName
+            creditCardOld.holderName = creditCard.holderName
+            creditCardOld.colorCard = creditCard.colorCard
+            creditCardOld.flag = creditCard.flag
+
+            return creditCardRepository.save(creditCardOld)
         }catch (objectNotFoundException: ObjectNotFoundException){
             throw objectNotFoundException
         }

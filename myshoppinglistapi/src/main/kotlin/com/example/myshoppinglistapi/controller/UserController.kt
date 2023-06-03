@@ -21,10 +21,10 @@ class UserController() {
         return userService.findAllUser()
     }
 
-    @GetMapping("/{email}")
-    fun findById(@PathVariable("email") email: String): ResponseEntity<User> {
+    @GetMapping("/{email}/{password}")
+    fun findById(@PathVariable("email") email: String, @PathVariable("password") password: String): ResponseEntity<User> {
         return try{
-            ResponseEntity<User>(userService.findById(email), HttpStatus.OK)
+            ResponseEntity<User>(userService.findById(email, password), HttpStatus.OK)
         }catch (objectNotFoundException: ObjectNotFoundException){
             ResponseEntity<User>(User(), HttpStatus.NOT_FOUND)
         }

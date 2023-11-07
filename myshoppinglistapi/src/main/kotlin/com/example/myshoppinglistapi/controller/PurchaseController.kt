@@ -54,4 +54,10 @@ class PurchaseController {
             ResponseEntity<Purchase>(Purchase(), HttpStatus.NOT_FOUND)
         }
     }
+
+    @DeleteMapping("/{id}")
+    fun delete(@PathVariable("id") id: Long) : ResponseEntity<Void>{
+        purchaseService.deletePurchase(id)
+        return ResponseEntity.noContent().build()
+    }
 }

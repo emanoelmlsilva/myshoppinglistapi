@@ -43,4 +43,14 @@ class PurchaseService {
             throw objectNotFoundException
         }
     }
+
+    fun deletePurchase(id: Long){
+        try {
+            findById(id)
+            return purchaseRepository.deleteById(id)
+        }catch (objectNotFoundException: ObjectNotFoundException){
+            throw PurchaseExistException("Produto NÃO existe")
+        }
+
+    }
 }

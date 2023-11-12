@@ -2,9 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="com.example.myshoppinglistapikotlin" target="17" />
-      <module name="com.example.myshoppinglistapikotlin.main" target="17" />
-      <module name="com.example.myshoppinglistapikotlin.test" target="17" />
       <module name="myshoppinglistapikotlin.myshoppinglistapikotlin.main" target="17" />
       <module name="myshoppinglistapikotlin.myshoppinglistapikotlin.test" target="17" />
     </bytecodeTargetLevel>

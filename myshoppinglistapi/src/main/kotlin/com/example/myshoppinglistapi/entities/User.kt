@@ -41,6 +41,6 @@ class User() {
         password: String,
         name: String,
         nickName: String,
-        idAvatar: Int,
+        idAvatar: Int
     ) : this()
 }

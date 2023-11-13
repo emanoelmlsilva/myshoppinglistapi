@@ -2,6 +2,7 @@ package com.example.myshoppinglistapi.controller;
 
 import com.example.myshoppinglistapi.entities.Category;
 import com.example.myshoppinglistapi.entities.User;
+import com.example.myshoppinglistapi.exceptions.UserExistException;
 import com.example.myshoppinglistapi.services.UserService;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -2,6 +2,7 @@ package com.example.myshoppinglistapi.controller;
 
 import com.example.myshoppinglistapi.entities.Category;
 import com.example.myshoppinglistapi.entities.User;
+import com.example.myshoppinglistapi.services.UserService;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,10 +39,10 @@ public class UserController {
            ResponseEntity<User> userResponse = new ResponseEntity<User>(userService.saveUser(user), HttpStatus.OK);
            if(userResponse.statusCode() == HttpStatus.OK){
                Category category = new Category();
-               category.category = "Mercado";
-               category.idImage = "outline_shopping_basket_black_36.png";
-               category.color = -15728802;
-               category.user = user;
+               category.setCategory("Mercado");
+               category.setIdImage("outline_shopping_basket_black_36.png");
+               category.setColor(-15728802);
+               category.setUser(user);
                categoryService.saveCategory(category);
            }
            return userResponse;

@@ -1,31 +1,28 @@
 package com.example.myshoppinglistapi.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id
     @Column(name = "email")
     private String email = "";
 
-    @NotNull
     @Column(name = "password")
     private String password = "";
 
-    @NotNull
     @Column(name = "name")
     private String name = "";
 
-    @NotNull
     @Column(name = "nickName")
     private String nickName = "";
 
-    @NotNull
     @Column(name = "idAvatar")
     private int idAvatar = 0;
 

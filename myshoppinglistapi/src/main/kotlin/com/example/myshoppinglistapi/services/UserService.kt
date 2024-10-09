@@ -6,6 +6,7 @@ import com.example.myshoppinglistapi.exceptions.UserExistException
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import com.example.myshoppinglistapi.repositories.UserRepository
+import com.example.myshoppinglistapi.utils.Status
 import java.lang.Exception
 import java.util.*
 
@@ -40,6 +41,10 @@ class UserService() {
             userOld.name = user.name
             userOld.nickName = user.nickName
             userOld.idAvatar = user.idAvatar
+
+            if(userOld.status == Status.INCOMPLETE){
+                userOld.status = Status.COMPLETE
+            }
 
             return userRepository.save(userOld)
         }catch  (objectNotFoundException: ObjectNotFoundException){

@@ -1,5 +1,6 @@
 package com.example.myshoppinglistapi.entities
 
+import com.example.myshoppinglistapi.utils.Status
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.jetbrains.annotations.NotNull
 import javax.persistence.*
@@ -36,11 +37,15 @@ class User() {
     @JsonIgnore
     var categoryCollection: List<Category> = listOf()
 
+    @field:NotNull
+    @field:Column(name = "status")
+    var status: Status = Status.INCOMPLETE
     constructor(
         email: String,
         password: String,
         name: String,
         nickName: String,
         idAvatar: Int,
+        status: Status
     ) : this()
 }

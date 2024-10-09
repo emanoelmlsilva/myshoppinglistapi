@@ -37,6 +37,9 @@ class CreditCard {
     @field:Column(name = "position")
     var position: Int = 0
 
+    @field:Column(name = "dayClosedInvoice")
+    var dayClosedInvoice: Int = 0
+
     @OneToMany(mappedBy = "creditCard")
     @JsonIgnore
     var purchaseCollection: List<Purchase> = listOf()
@@ -55,7 +58,8 @@ class CreditCard {
         typeCard: Int,
         user: User,
         flag: Int,
-        position: Int
+        position: Int,
+        dayClosedInvoice: Int
     ) {
         this.holderName = holderName
         this.cardName = cardName
@@ -65,5 +69,6 @@ class CreditCard {
         this.user = user
         this.flag = flag
         this.position = position
+        this.dayClosedInvoice = dayClosedInvoice
     }
 }
